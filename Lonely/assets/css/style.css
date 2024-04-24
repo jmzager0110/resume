@@ -9,6 +9,30 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:root{
+    --light-orange: hsl(16, 100%,66%); /**#FF7F50*/
+    --intense-orange: hsl(0, 100%, 50%);./** #ff0000*/
+    --teal: hsl(187, 89%, 47%); /**#0DCAE3*/
+	--med-teal: hsl(177, 57%, 41%); /**#2ca39d*/
+    --bright-teal: hsl(160, 100%, 75%); /**#7FFFD4*/
+    --aqua: hsl(180, 100%, 50%); /**#00FFFF*/
+    --light-teal: hsl(187, 48%, 60%); /**#68BFCA*/
+    --med-gray: hsl(207, 10%, 39%); /**#5a656e*/
+    --dark-blue-gray: hsl(209, 56%, 46%); /**#2c4964*/
+    --light-gray: hsl(208, 7%, 46%); /**#6c757d*/
+    --blue-gray-text: hsl(209, 39%, 28%); /**#2c4863*/
+    --more-blue-than-gray: hsl(209, 39%, 33%); /**#345676 #3c6387*/
+    --med-blue-gray: hsl(209, 39%, 43%); /**#437099 #4b7dab*/
+    --light-med-blue: hsl(209, 39%, 58%); /**#6b96be*/
+	--light-blue: hsl(212, 38%, 92%); /**#e4ebf3*/
+	--dark-gray: hsl(0, 0%, 7%); /**#111*/
+	--white: hsl(0, 0%, 100%); /**#fff #eee*/
+    /**--pink: hsl() #dd5a92 <- links in hover state
+    --other-pink: hsl() #db528c <- back to top hover
+    --yet-another-pink: hsl() #d43076 <-used heavily
+    --light-pink #fcf2f7 #eeafca*/
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #5a656e;
@@ -99,6 +123,12 @@ h6 {
   margin: 0;
   max-height: 40px;
 }
+
+.hero-header {
+    color: var(--light-med-blue);
+}
+
+.hero-sub{}
 
 .scrolled-offset {
   margin-top: 60px;
@@ -557,6 +587,20 @@ section {
 /*--------------------------------------------------------------
 # Skills
 --------------------------------------------------------------*/
+.skills-table{
+    layout: fixed;
+    border-radius: 5px;
+}
+
+.skills-table th{
+    color: var(--aqua);
+}
+
+.skills-table td{
+    color: var(--med-teal);
+    padding: .25rem;
+}
+
 .skills .progress {
   height: 50px;
   display: block;
