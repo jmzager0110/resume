@@ -367,7 +367,7 @@ h6 {
   background: url("../img/hero-bg.jpg") top center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: var(--teal);
+  background-color: var(--med-teal);
   padding: 0 15px;
 }
 
@@ -376,11 +376,11 @@ h6 {
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
-  color: var(--white);
+  color: var(--aqua);
 }
 
 #hero h2 {
-  color: var(--light-gray);
+  color: var(--med-teal);
   margin-bottom: 10px;
   font-size: 24px;
   font-weight: 300;
@@ -390,7 +390,7 @@ h6 {
 #hero .btn-get-started {
   font-size: 64px;
   transition: 0.5s;
-  color: var(--white);
+  color: var(--aqua);
   height: 60px;
 }
 
@@ -426,7 +426,7 @@ section {
 }
 
 .section-bg {
-  background: linear-gradient(180deg, #f2f6f9 0%, #fff 100%);
+  background-color: linear-gradient(180deg, #f2f6f9 0%, #fff 100%);
 }
 
 .section-title {
@@ -629,7 +629,7 @@ tr:nth-child(even) {
 .resume .resume-item {
   padding: 0 0 .05rem 20px;
   margin-top: -2px;
-  border-left: 2px solid var(--yet-another-pink);
+  border-left: 2px solid var(--med-teal);
   position: relative;
 }
 
@@ -671,8 +671,8 @@ tr:nth-child(even) {
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background-color: var(--white);
-  border: 2px solid var(--yet-another-pink);
+  background-color: var(--aqua);
+  border: 2px solid var(--med-teal);
 }
 
 /*--------------------------------------------------------------
@@ -702,7 +702,7 @@ tr:nth-child(even) {
 }
 
 .services .icon-box:hover::before {
-  background: var(--med-teal);
+  background-color: var(--med-teal);
   height: 100%;
   border-radius: 0px;
 }
@@ -715,7 +715,7 @@ tr:nth-child(even) {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: var(--bright-teal);
+  background-color: var(--bright-teal);
   transition: all 0.3s ease-in-out;
 }
 
@@ -802,7 +802,7 @@ tr:nth-child(even) {
 }
 
 .contact .social-links a:hover {
-  background: var(--aqua);
+  background-color: var(--aqua);
   color: var(--white);
 }
 
@@ -825,7 +825,7 @@ tr:nth-child(even) {
 .contact .php-email-form .error-message {
   display: none;
   color: var(--white);
-  background:  var(--med-orange);
+  background-color:  var(--med-orange);
   text-align: left;
   padding: 15px;
   font-weight: 600;
@@ -876,7 +876,7 @@ tr:nth-child(even) {
 }
 
 .contact .php-email-form button[type=submit] {
-  background: var(--yet-another-pink);
+  background-color: var(--yet-another-pink);
   border: 0;
   padding: 10px 24px;
   color: var(--white);
