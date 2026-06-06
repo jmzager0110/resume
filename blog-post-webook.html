@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Lonely Bootstrap Template</title>
+  <title>Jessica Zager | Bog Post</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
 
 <body>
 
-<!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -98,9 +98,107 @@
 
     <section class="inner-page">
       <div class="container">
+        <h1>How To: Create a Webhook for Your Standalone Test Suite</h1>
+        <h2>Background</h2>
         <p>
-          Example inner page template
+          That's the trouble when you can't participate in shift-left, you can't rely on your tests being integrated but you have to rely on either the deployment officer to remember to tell you when there's a new deployment, or yourself to remember to run tests. Or both! If only there was a way to get the technologies to talk to each other... GUESS WHAT, THERE IS! In this example, I'm deploying my resume site on Netlify, which sends an outgoing notification to a separate GitHub repo to fire off tests through Actions. For other types of tech, the logic should apply, if the code doesn't.
         </p>
+        <h2>Steps</h2>
+        <h3>PreRequisites</h3>
+        <ol>
+          <li>A dev with Admin rights to the Netlify site to be tested</li>
+          <li>And they'd need a little bit of time</li>
+          <li>QA/AQ person who can hook them up with a personal access token from the test suite</li>
+          <li>They'd also need a few minutes as well</li>
+        </ol>
+        <h3>Get Into It</h3>
+        <ol>
+          <li>
+            Create a workflow YAML like the one in this repo. The type is specific to the type selected in Netlify later.
+
+          </li>
+          <li>In GitHub, go to Settings, then Developer Settings at the bottom of that menu. Create a PAT or Personal Access Token (Classic):
+Give it a descriptive name (e.g., "Netlify Webhook Trigger").
+Set an expiration date.
+For the scopes, you only need to select the repo scope. If your repository is public, you can get away with just public_repo.
+Copy the Token: Generate the token and copy it immediately. You will not be able to see it again! Treat this token like a password.</li>
+<li>In Netlify, under Project Configuration, go to Notifications -> Emails & Webhooks. Add a Webhook:
+HTTP POST request
+Event -> Deploy Succeeded
+URL -> This example is https://api.github.com/repos/jmzager0110/EvenBetterTestSuite/dispatches</li>
+<li>
+  Still in Netlify, you need to add 3 environment variables:
+GITHUB_PAT
+GITHUB_USER
+GITHUB_REPO
+</li>
+<li>At the root of your repo that deploys via Netlify, add:
+A folder "netlify"
+Then a folder in it "functions"
+Then a file within that "deploy-succeeded.js". Finally, back at the root, a file, "netlify.toml"</li>        
+</ol>
+        <h3>Code Examples</h3>
+        <h4>netlify.toml</h4>
+        <pre>
+          <code>
+            [functions]
+              directory = "netlify/functions"
+          </code>
+        </pre>
+        <h4>netlify/functions/deploy-succeeded.js</h4>
+        <pre>
+          <code>
+// This is an event-triggered function that runs on "deploy-succeeded".
+exports.handler = async function(event, context) {
+// 1. GET YOUR SECRETS
+// These are stored in the Netlify UI, not in your code.
+const githubToken = process.env.GITHUB_PAT;
+const githubUser = process.env.GITHUB_USER;
+const githubRepo = process.env.GITHUB_REPO;
+
+// 2. DEFINE THE REQUEST
+const url = `https://api.github.com/repos/${githubUser}/${githubRepo}/dispatches`;
+const payload = {
+  event_type: 'netlify-deploy-success', // This must match your GitHub Action's 'on.repository_dispatch.types'
+};
+
+console.log(`Sending dispatch request to: ${url}`);
+
+// 3. SEND THE REQUEST
+try {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'Authorization': `token ${githubToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  // 4. HANDLE THE RESPONSE
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error(`GitHub API Error: ${response.status} - ${errorBody}`);
+    return { statusCode: response.status, body: `Failed to trigger GitHub Action. Server responded with: ${errorBody}` };
+  }
+
+  console.log('Successfully triggered the GitHub Action workflow.');
+  return {
+    statusCode: 204, // Use 204 "No Content" for a successful dispatch
+    body: 'Workflow triggered.',
+  };
+
+} catch (error) {
+  console.error('An unexpected error occurred:', error);
+  return {
+    statusCode: 500,
+    body: `An error occurred while trying to trigger the workflow: ${error.message}`,
+  };
+}
+};
+          </code>
+        </pre>
       </div>
     </section>
 
