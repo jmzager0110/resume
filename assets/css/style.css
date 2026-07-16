@@ -12,7 +12,7 @@
 :root{
     --light-orange: hsl(16, 100%,66%); /**#FF7F50*/
     --med-orange: hsl(13, 90%, 49%); /*#ed3c0d*/
-    --intense-orange: hsl(0, 100%, 50%);./** #ff0000*/
+    --intense-orange: hsl(0, 100%, 50%);/** #ff0000*/
     --teal: hsl(187, 89%, 47%); /**#0DCAE3*/
 	--med-teal: hsl(177, 57%, 41%); /**#2ca39d*/
     --bright-teal: hsl(160, 100%, 75%); /**#7FFFD4*/
