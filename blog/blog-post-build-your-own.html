@@ -131,59 +131,80 @@
         <p>In the deployment part, you'll see that you can either hook into a GitHub repo OR just drag and drop folders from your machine, so it's really up to you if you want to create a GitHub Repository to store your code. Here's a few pointers:</p>
         <ul>
           <li>Looks pretty cool professionally to have a GitHub repo</li>
-          <li>If you choose to use the GitHub approach, by default your Netlify app will automatically deploy every time there is a push to the main branch, so you'll need to get good at git</li>
+          <li>If you choose to use the GitHub approach, by default your Netlify app will automatically deploy every time there is a push to the main branch, so you'll need to decide on your branching strategy</li>
           <li>If you're using a machine that's already got GitHub auth through a different account, like some big corporation that can claim ownership of your work, drag and drop is better so you don't worry which user account did what</li>
           <li>Both options at the end are easy as hell</li>
         </ul>
         <h3 id="create">Create Your Brand's Socks Off</h3>
+        <h4>Just a Tip</h4>
+        <p>You're going to be updating the index.html file along with the styles.css file. I like to keep an eye on each thing I do, so in the explorer tab of your IDE, right click on index.html. There's an option like, "Open in Integrated Browser", that way you can preview all your changes before you deploy.</p>
         <h4>May I suggest starting with color schemes?</h4>
         <p>This is my favorite part, but starting here also sets up your style sheet going forward. There are a ton of sites out there that have color schemes and themes ready to go that pass color contrast checks, & some where you can build your own!
           Since I'm not building a global e-commerce site, my colors do not pass contrast checks, but you got to do you. If you decide to build your own scheme, you can always use the WAVE browser extension to test your changes. Either way, once you make your decision, for the love of anything at all, declare your damn varaibles at the root of your style sheet!
         </p>
         <p>In the explorer window of your IDE, look for a file called style.css. At the tip top of that file, list out your preferred colors like this:</p>
-        <code>
+        <pre>
           :root{
-    --light-orange: hsl(16, 100%,66%); /**#FF7F50*/
-    --med-orange: hsl(13, 90%, 49%); /*#ed3c0d*/
-    --intense-orange: hsl(0, 100%, 50%);/** #ff0000*/
-    --teal: hsl(187, 89%, 47%); /**#0DCAE3*/
-    --dark-blue-gray: hsl(209, 56%, 46%); /**var(--dark-blue-gray)*/
-    --light-gray: hsl (0, 0%, 93%); /*eee*/
-    --blue-gray-text: hsl(209, 39%, 28%); /**#2c4863*/
-    --more-blue-than-gray: hsl(209, 39%, 33%); /**#345676  var(--more-blue-than-gray);*/
-    --med-blue-gray: hsl(209, 39%, 43%); /**var(--med-blue-gray) var(--more-blue-than-gray)*/
-    --light-med-blue: hsl(209, 39%, 58%); /**var(--light-med-blue)*/
-    --pink: hsl(334, 66%, 61%); /*#dd5a92 /* links in hover state*/
-    --other-pink: hsl(335, 66%, 59%); /*#db528c <- back to top hover*/
-    --yet-another-pink: hsl(334, 66%, 51%); /*var(--yet-another-pink) <-used heavily*/
-}
-        </code>
+          --light-orange: hsl(16, 100%,66%); /**#FF7F50*/
+          --med-orange: hsl(13, 90%, 49%); /*#ed3c0d*/
+          --intense-orange: hsl(0, 100%, 50%);/** #ff0000*/
+          --teal: hsl(187, 89%, 47%); /**#0DCAE3*/
+          --dark-blue-gray: hsl(209, 56%, 46%); /**var(--dark-blue-gray)*/
+          --light-gray: hsl (0, 0%, 93%); /*eee*/
+          --blue-gray-text: hsl(209, 39%, 28%); /**#2c4863*/
+          --more-blue-than-gray: hsl(209, 39%, 33%); /**#345676  var(--more-blue-than-gray);*/
+          --med-blue-gray: hsl(209, 39%, 43%); /**var(--med-blue-gray) var(--more-blue-than-gray)*/
+          --light-med-blue: hsl(209, 39%, 58%); /**var(--light-med-blue)*/
+          --pink: hsl(334, 66%, 61%); /*#dd5a92 /* links in hover state*/
+          --other-pink: hsl(335, 66%, 59%); /*#db528c <- back to top hover*/
+          --yet-another-pink: hsl(334, 66%, 51%); /*var(--yet-another-pink) <-used heavily*/
+        }
+</pre>
 
       <p>This way, whenever you're stylin' the next thing on your site, you can just start typing & your IDE will understand, like this:</p>
-      <code>
+      <pre>
         body {
-  font-family: "Open Sans", sans-serif;
-  color: var(--dark-gray);
-}
+          font-family: "Open Sans", sans-serif;
+          color: var(--dark-gray);
+        }
 
-
-a {
-  color: var(--aqua);
-  text-decoration: none;
-}
-
-
-a:hover {
-  color: var(--bright-teal);
-  text-decoration: none;
-}
-
-      </code>
+        a {
+          color: var(--aqua);
+          text-decoration: none;
+        }
+</pre>
       <p>I have a lot of comments to myself in there, plus the hex codes for fun. But you HAVE to use the HSL values.</p>
       <h4>Do Not Forget the Damn Data</h4>
-      <p></p>
-        <h3 id="deploy"></h3>
-      </div>
+      <p>You can either rename all your attributes or just use what's already there, if you look at my code, that's basically what I did.
+        So, on my template, my work experience is in the section for resume, luckily it was already named appropriately. As you're filling out your details, make sure it mirrors your physical resume. If you can copy and paste, even flipping better!
+        The layout on mine is a little different, so I used unordered lists and nested lists to try to organize it for readability, where my physical resume uses paragraghs instead of bullet points.
+      </p>
+      <h5>Contact Links</h5>
+      <p>I made sure I had my links for work and contacts in the top of the body and at the bottom, and linked in my menu. This sounds difficult but it isn't. For a virtual resume, you'll want actual links, like to dial, start a new email, I even included SMS. This isn't difficult, just uses the old href attribute, like this:</p>
+      <pre>
+        &#x3C;li&#x3E;&#x3C;a href=&#x22;sms:8168200853&#x22;&#x3E;Text Me&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;&#x3C;a href=&#x22;tel:8168200853&#x22;&#x3E;Call Me&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;&#x3C;a href=&#x22;mailto:jmzager@gmail.com&#x22;&#x3E;Email Me&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+      </pre>
+      <p>Note how I have the text explaining the action wrapped in the warm blanket of the link element, that's going to display as a clickable link that then performs the action.</p>
+      <h4>What about images?</h4>
+      <p>Your template is going to have placeholder images stored in probably assets, then a folder img. What I did was renamed the placeholder image files, then used the original file name for new images I wanted to use instead, which made it easier to map where they would go and test them out. Once you're happy, you can delete the placholder images. One note, jpeg images are generally the standard, since you're not going to use a full library, I'd suggest this format. Otherwise, if you want to upload your entire photo gallery, read about load times for performance versus storage in the topic of jpeg versus webp formats.
+        <em>I do suggest playing around with favicon images and any image labeled apple-touch. Favicons display in the browser tab on desktop, any mobile specific named image displays when you share a link via SMS.</em>
+      </p>
+      <h4>Finally, Do You Like The Layout and Icons?</h4>
+      <p> Here's where that Bootstrap library comes in. Templates will have components and icons already in use, but if you look through the assets folder, you should see a vendor folder. My template has a few I used, like "bootstrap" and "bootstrap-icons". Take a little time to review those files, or get on the internet and search for Bootstrap-WhateverYouWantToReplace. They use class attributes generally for the html elements, but this is basically a plug and play library. You should already have the dependencies to use whatever you want, so if there's something you're not thrilled about, explore and experiment!      <em>When you're happy with your work, take a breath and prepare for the easiest part.</em>  
+</p>
+      <h3 id="deploy">Blast Off!</h3>
+      <p>I used Netlify, but there's several similar services out there. I love their ease of use.</p>
+      <h4>If You're using GitHub</h4>
+      <p>It's easier for you to just sign up with your GitHub account on Netlify.com. I was already logged into GitHub in another tab thankfully cause passwords, am I right? It will ask you a series of questions, if prompted, be sure to select the option to deploy from GitHub. Next, it will ask you which repository you want to link to. <em>If you haven't already, make sure you've pushed your completed work directly to the main branch, this time only.</em>You will follow one or two straight forward prompts, then it is deployed!</p>
+      <h4>If You're NOT Using GitHub</h4>
+      <p>Sign up for a free account on Netlify.com with your personal email. You'll need to verify your email then it asks some questions. Under, "What would you like to do first?", select the option, "Publish files you already have". This is the drag and drop option. I prefer the "choose a folder" when I make changes, but that's entirely up to you and how you navigate your machine.</p>
+      <h4>Both Options, Update Your URL</h4>
+      <p>You see the deploy confirmation page! But the URL is random as hell... Don't sweat it. In the left menu, so to Project Configuration. Under Project Information, click Change project name. In the modal, it will show you the example of what your URL will look like. Since this is my virtual resume, I just used "jmzager", but this is for you. Once you're happy, save, then start sending everyone your badass new website!
+        <em>Make sure you ask your frinds in QA to take a look.</em> &#1F618; &#1F619; 
+      </p>
+    </div>
     </section>
 
   </main><!-- End #main -->
